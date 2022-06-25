@@ -1,4 +1,5 @@
 import asyncio
+import os
 
 from flask import Flask, render_template
 
@@ -13,9 +14,12 @@ app.config['SECRET_KEY'] = asyncio.run(secret_key())
 def index():
     return render_template('index.html')
 
+
 @app.errorhandler(404)
 def pageNotFount(error):
     return render_template('features-404.html')
 
+
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(debug=True, host='0.0.0.0', port=port)
