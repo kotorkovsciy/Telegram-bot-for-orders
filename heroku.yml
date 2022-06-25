@@ -1,4 +1,4 @@
 build:
-  docker:
-    bot: tele-bot/Dockerfile
-    web: web-page/Dockerfile
+    docker:
+        bot: tele-bot/Dockerfile
+        web: web-page/Dockerfile
