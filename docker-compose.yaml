@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  web-page:
+    build: web-page/
+    restart: always
+    ports:
+      - "8080:8080"
+    
+  tele-bot:
+    build: tele-bot/
+    restart: always
+    environment:
+      - TOKEN=${{ secrets.BOT_TOKEN }}
