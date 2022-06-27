@@ -5,7 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="format-detection" content="telephone=no">
-	<title>здоровое питание</title>
+	<title>Здоровое питание</title>
 	<link rel="icon" type="image/x-icon" href="{{url_for('static', filename='images/favicon.ico')}}" />
 	<link rel='stylesheet' href="{{url_for('static', filename='js/vendor/swiper/idangerous.swiper.css')}}"
 		type='text/css' media='all' />
@@ -50,7 +50,7 @@
 						<img src="{{url_for('static', filename='images/162x55.png')}}" alt="">
 					</a>
 				</div>
-				<h1 class="subTitle">здоровое питание</h1>
+				<h1 class="subTitle">Здоровое питание</h1>
 			</header>
 
 			<div class="wrapContent">
@@ -66,57 +66,32 @@
 										</nav>
 										<h1 class="page-title">Shop</h1>
 										<p class="woocommerce-result-count">
-											Showing 1&ndash;10 of 14 results</p>
+											Showing 1&ndash;{{quantity_products}} of {{quantity_products}} results</p>
 										<ul class="products">
+											{% for row in products -%}
+											{% if row[2] == 'product' -%}
 											<li class="product">
 												<a href>
-													<img src="{{url_for('static', filename='images/300x300.png')}}"
-														class="attachment-shop_catalog" alt="baby food-1" />
-													<h3>Beech Nute Baby Food</h3>
-													<span class="price">
-														<span class="amount">&pound;5.00</span>
-													</span>
-												</a>
-												<a href class="button add_to_cart_button product_type_simple">Add to
-													cart</a>
-											</li>
+											{% elif row[2] == 'first product' -%}
 											<li class="first product">
 												<a href>
 													<span class="onsale">Sale!</span>
-													<img src="{{url_for('static', filename='images/300x300.png')}}"
-														class="attachment-shop_catalog" alt="apetito1" />
-													<h3>Apetito Organic Penne</h3>
-													<span class="price">
-														<del>
-															<span class="amount">&pound;9.00</span>
-														</del>
-														<ins>
-															<span class="amount">&pound;7.20</span>
-														</ins>
-													</span>
-												</a>
-												<a href class="button add_to_cart_button product_type_simple">Add to
-													cart</a>
-											</li>
+											{% elif row[2] == 'last product' -%}
 											<li class="last product">
 												<a href>
 													<span class="onsale">Sale!</span>
+											{% endif -%}
+												
 													<img src="{{url_for('static', filename='images/300x300.png')}}"
-														class="attachment-shop_catalog"
-														alt="15835-cafedirect-machu-picchu-organic-coffee-beans-a" />
-													<h3>Espresso Roast Coffee Beans</h3>
+														class="attachment-shop_catalog" alt="baby food-1" />
+													<h3>{{row[1]}}</h3>
 													<span class="price">
-														<del>
-															<span class="amount">&pound;26.00</span>
-														</del>
-														<ins>
-															<span class="amount">&pound;18.00</span>
-														</ins>
+														<span class="amount">&#8381;{{row[3]}}</span>
 													</span>
 												</a>
-												<a href class="button add_to_cart_button product_type_simple">Add to
-													cart</a>
+												<a href class="button add_to_cart_button product_type_simple">Добавить в корзину</a>
 											</li>
+											{% endfor -%}
 										</ul>
 										<nav class="woocommerce-pagination">
 											<ul class='page-numbers'>
