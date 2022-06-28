@@ -2,9 +2,10 @@ from aiogram.utils import executor
 from create_bot import dp
 from handlers import client
 
+
 async def on_startup(_):
     print('Бот вышел в онлайн')
-    
+
 client.register_handlers_client(dp)
 
 if __name__ == '__main__':
