@@ -66,7 +66,7 @@
 										</nav>
 										<h1 class="page-title">Shop</h1>
 										<p class="woocommerce-result-count">
-											Showing 1&ndash;{{quantity_products}} of {{quantity_products}} results</p>
+											Showing {{Countdown_products}}&ndash;{{quantity_products}} of {{all_quantity_products}} results</p>
 										<ul class="products">
 											{% for row in products -%}
 											{% if row[2] == 'product' -%}
@@ -95,15 +95,37 @@
 										</ul>
 										<nav class="woocommerce-pagination">
 											<ul class='page-numbers'>
+												{% if page - 1 > 1 -%}
 												<li>
-													<span class='page-numbers current'>1</span>
+													<a class='page-numbers' href='1'>1</a>
 												</li>
+												{% endif -%}
+												{% if all_quantity_products/10-1 == page -%}
 												<li>
-													<a class='page-numbers' href='#'>2</a>
+													<a class='page-numbers' href='{{page-2}}'>{{page-2}}</a>
 												</li>
+												{% endif -%}
+												{% if page - 1 > 0 -%}
 												<li>
-													<a class="next page-numbers" href="#">&rarr;</a>
+													<a class='page-numbers' href='{{page-1}}'>{{page-1}}</a>
 												</li>
+												{% endif -%}
+												<li>
+													<span class='page-numbers current'>{{page}}</span>
+												</li>
+												{% if all_quantity_products/10-1 != page -%}
+												<li>
+													<a class='page-numbers' href='{{page+1}}'>{{page+1}}</a>
+												</li>
+												{% if page - 1 <= 0 -%}
+												<li>
+													<a class='page-numbers' href='{{page+2}}'>{{page+2}}</a>
+												</li>
+												{% endif -%}
+												<li>
+													<a class="next page-numbers" href="{{page+1}}">&rarr;</a>
+												</li>
+												{% endif -%}
 											</ul>
 										</nav>
 									</article>

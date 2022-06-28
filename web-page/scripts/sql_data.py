@@ -16,9 +16,16 @@ class Database:
 
     async def read_prod(self):
         with self.connection:
-            return self.cursor.execute("SELECT * FROM info_products").fetchall()
+            return self.cursor.execute("SELECT * FROM info_products LIMIT 10").fetchall()
+
+    async def read_prod_more(self, page):
+        with self.connection:
+            return self.cursor.execute("SELECT * FROM info_products LIMIT ?, ?", (page*10,10)).fetchall()
 
     async def quantity_prod(self):
         with self.connection:
             return self.cursor.execute("SELECT count(*) FROM info_products").fetchall()[0][0]
 
+    async def write_prod(self, title, status, price, quantity):
+        with self.connection:
+            return self.cursor.execute("INSERT INTO info_products (title, status, price, quantity) VALUES (?, ?, ?, ?)", (title, status, price, quantity, ))
