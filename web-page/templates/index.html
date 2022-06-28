@@ -66,22 +66,23 @@
 										</nav>
 										<h1 class="page-title">Shop</h1>
 										<p class="woocommerce-result-count">
-											Showing {{Countdown_products}}&ndash;{{quantity_products}} of {{all_quantity_products}} results</p>
+											Showing {{Countdown_products}}&ndash;{{quantity_products}} of
+											{{all_quantity_products}} results</p>
 										<ul class="products">
 											{% for row in products -%}
 											{% if row[2] == 'product' -%}
 											<li class="product">
 												<a href>
-											{% elif row[2] == 'first product' -%}
+													{% elif row[2] == 'first product' -%}
 											<li class="first product">
 												<a href>
 													<span class="onsale">Sale!</span>
-											{% elif row[2] == 'last product' -%}
+													{% elif row[2] == 'last product' -%}
 											<li class="last product">
 												<a href>
 													<span class="onsale">Sale!</span>
-											{% endif -%}
-												
+													{% endif -%}
+
 													<img src="{{url_for('static', filename='images/300x300.png')}}"
 														class="attachment-shop_catalog" alt="baby food-1" />
 													<h3>{{row[1]}}</h3>
@@ -89,7 +90,8 @@
 														<span class="amount">&#8381;{{row[3]}}</span>
 													</span>
 												</a>
-												<a href class="button add_to_cart_button product_type_simple">Добавить в корзину</a>
+												<a href class="button add_to_cart_button product_type_simple">Добавить в
+													корзину</a>
 											</li>
 											{% endfor -%}
 										</ul>
@@ -117,15 +119,14 @@
 												<li>
 													<a class='page-numbers' href='{{page+1}}'>{{page+1}}</a>
 												</li>
-												{% if page - 1 <= 0 -%}
-												<li>
+												{% if page - 1 <= 0 -%} <li>
 													<a class='page-numbers' href='{{page+2}}'>{{page+2}}</a>
-												</li>
-												{% endif -%}
-												<li>
-													<a class="next page-numbers" href="{{page+1}}">&rarr;</a>
-												</li>
-												{% endif -%}
+													</li>
+													{% endif -%}
+													<li>
+														<a class="next page-numbers" href="{{page+1}}">&rarr;</a>
+													</li>
+													{% endif -%}
 											</ul>
 										</nav>
 									</article>
