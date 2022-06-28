@@ -4,3 +4,5 @@ venv
 page
 *.db
 *.sqbpro
+*.db-journal
+add_prod.py
