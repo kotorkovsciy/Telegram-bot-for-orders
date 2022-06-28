@@ -2,3 +2,6 @@
 */__pycache__*
 *.pyc
 */page*
+*.db
+*.sqbpro
+*.db-journal
