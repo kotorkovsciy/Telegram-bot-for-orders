@@ -20,7 +20,7 @@ class Database:
 
     async def read_prod_more(self, page):
         with self.connection:
-            return self.cursor.execute("SELECT * FROM info_products LIMIT ?, ?", (page*10,10)).fetchall()
+            return self.cursor.execute("SELECT * FROM info_products LIMIT ?, ?", (page*10, 10)).fetchall()
 
     async def quantity_prod(self):
         with self.connection:
